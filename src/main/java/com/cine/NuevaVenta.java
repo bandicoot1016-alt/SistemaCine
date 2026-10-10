@@ -15,9 +15,48 @@ public class NuevaVenta extends javax.swing.JFrame {
     /**
      * Creates new form NuevaVenta
      */
-    public NuevaVenta() {
-        initComponents();
-    }
+    
+public NuevaVenta() {
+    initComponents();
+
+    getContentPane().setBackground(new java.awt.Color(25, 25, 25));
+
+    setIconImage(new javax.swing.ImageIcon(
+        getClass().getResource("/com/cine/claqueta.png")
+    ).getImage());
+
+    // Centrar título y botones horizontalmente
+    jLabel1.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnBoletas.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnComida.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnBoletasComida.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnVolver.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+
+    // Crear un panel vertical para agrupar los componentes
+    javax.swing.JPanel panel = new javax.swing.JPanel();
+    panel.setOpaque(false);
+    panel.setLayout(new javax.swing.BoxLayout(
+        panel, javax.swing.BoxLayout.Y_AXIS
+    ));
+
+    panel.add(jLabel1);
+    panel.add(javax.swing.Box.createVerticalStrut(30));
+    panel.add(btnBoletas);
+    panel.add(javax.swing.Box.createVerticalStrut(15));
+    panel.add(btnComida);
+    panel.add(javax.swing.Box.createVerticalStrut(15));
+    panel.add(btnBoletasComida);
+    panel.add(javax.swing.Box.createVerticalStrut(30));
+    panel.add(btnVolver);
+
+    // Centrar el grupo en la ventana maximizada
+    getContentPane().removeAll();
+    getContentPane().setLayout(new java.awt.GridBagLayout());
+    getContentPane().add(panel);
+
+    setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,92 +68,166 @@ public class NuevaVenta extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnBoletas = new javax.swing.JButton();
+        btnComida = new javax.swing.JButton();
+        btnBoletasComida = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(220, 20, 40));
         jLabel1.setText("NUEVA VENTA");
 
-        jButton1.setText("Boletas");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        btnBoletas.setBackground(new java.awt.Color(180, 20, 35));
+        btnBoletas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBoletas.setForeground(new java.awt.Color(255, 255, 255));
+        btnBoletas.setText("Boletas");
+        btnBoletas.setFocusPainted(false);
+        btnBoletas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBoletasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBoletasMouseExited(evt);
+            }
+        });
+        btnBoletas.addActionListener(this::btnBoletasActionPerformed);
 
-        jButton2.setText("Comida");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        btnComida.setBackground(new java.awt.Color(180, 20, 35));
+        btnComida.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnComida.setForeground(new java.awt.Color(255, 255, 255));
+        btnComida.setText("Comida");
+        btnComida.setFocusPainted(false);
+        btnComida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnComidaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnComidaMouseExited(evt);
+            }
+        });
+        btnComida.addActionListener(this::btnComidaActionPerformed);
 
-        jButton3.setText("Boletas y Comida");
-        jButton3.addActionListener(this::jButton3ActionPerformed);
+        btnBoletasComida.setBackground(new java.awt.Color(180, 20, 35));
+        btnBoletasComida.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBoletasComida.setForeground(new java.awt.Color(255, 255, 255));
+        btnBoletasComida.setText("Boletas y Comida");
+        btnBoletasComida.setFocusPainted(false);
+        btnBoletasComida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBoletasComidaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBoletasComidaMouseExited(evt);
+            }
+        });
+        btnBoletasComida.addActionListener(this::btnBoletasComidaActionPerformed);
 
-        jButton4.setText("Volver");
-        jButton4.addActionListener(this::jButton4ActionPerformed);
+        btnVolver.setBackground(new java.awt.Color(100, 20, 25));
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setText("Volver");
+        btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVolverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVolverMouseExited(evt);
+            }
+        });
+        btnVolver.addActionListener(this::btnVolverActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVolver)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
+                        .addGap(106, 106, 106)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton4)))
-                .addContainerGap(127, Short.MAX_VALUE))
+                            .addComponent(btnComida, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBoletas, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBoletasComida))))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(106, 106, 106)
                 .addComponent(jLabel1)
                 .addGap(31, 31, 31)
-                .addComponent(jButton1)
+                .addComponent(btnBoletas)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(btnComida)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(btnBoletasComida)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVolver)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
     VentanaPrincipal ventana = new VentanaPrincipal();
     ventana.setVisible(true);
     this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnBoletasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoletasActionPerformed
 DatosCliente.limpiarDatosVenta();
 
 SeleccionarPelicula ventana = new SeleccionarPelicula();
 ventana.setVisible(true);
 this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnBoletasActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComidaActionPerformed
 SeleccionarComida ventana = new SeleccionarComida();
 ventana.setVisible(true);
 this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnComidaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnBoletasComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoletasComidaActionPerformed
 DatosCliente.limpiarDatosVenta();
 
 SeleccionarPelicula ventana = new SeleccionarPelicula();
 ventana.activarCompraConComida();
 ventana.setVisible(true);
 this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnBoletasComidaActionPerformed
+
+    private void btnBoletasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoletasMouseEntered
+btnBoletas.setBackground(new java.awt.Color(220, 20, 40));btnBoletas.setBackground(new java.awt.Color(220, 20, 40));    }//GEN-LAST:event_btnBoletasMouseEntered
+
+    private void btnBoletasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoletasMouseExited
+btnBoletas.setBackground(new java.awt.Color(180, 20, 35));btnBoletas.setBackground(new java.awt.Color(180, 20, 35));    }//GEN-LAST:event_btnBoletasMouseExited
+
+    private void btnComidaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComidaMouseEntered
+btnComida.setBackground(new java.awt.Color(220, 20, 40));btnComida.setBackground(new java.awt.Color(220, 20, 40));    }//GEN-LAST:event_btnComidaMouseEntered
+
+    private void btnComidaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComidaMouseExited
+btnComida.setBackground(new java.awt.Color(180, 20, 35));btnComida.setBackground(new java.awt.Color(180, 20, 35));    }//GEN-LAST:event_btnComidaMouseExited
+
+    private void btnBoletasComidaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoletasComidaMouseEntered
+btnBoletasComida.setBackground(new java.awt.Color(220, 20, 40));btnBoletasComida.setBackground(new java.awt.Color(220, 20, 40));    }//GEN-LAST:event_btnBoletasComidaMouseEntered
+
+    private void btnBoletasComidaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBoletasComidaMouseExited
+btnBoletasComida.setBackground(new java.awt.Color(180, 20, 35));btnBoletasComida.setBackground(new java.awt.Color(180, 20, 35));    }//GEN-LAST:event_btnBoletasComidaMouseExited
+
+    private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
+btnVolver.setBackground(new java.awt.Color(160, 30, 35));btnVolver.setBackground(new java.awt.Color(160, 30, 35));    }//GEN-LAST:event_btnVolverMouseEntered
+
+    private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
+btnVolver.setBackground(new java.awt.Color(100, 20, 25));btnVolver.setBackground(new java.awt.Color(100, 20, 25));    }//GEN-LAST:event_btnVolverMouseExited
 
     /**
      * @param args the command line arguments
@@ -142,10 +255,10 @@ this.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnBoletas;
+    private javax.swing.JButton btnBoletasComida;
+    private javax.swing.JButton btnComida;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

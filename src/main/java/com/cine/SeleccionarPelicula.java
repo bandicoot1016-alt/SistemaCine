@@ -19,29 +19,73 @@ public class SeleccionarPelicula extends javax.swing.JFrame {
     /**
      * Creates new form SeleccionarPelicula
      */
-    public SeleccionarPelicula() {
-        initComponents();
-        cargarPeliculas();
-    }
+    
+public SeleccionarPelicula() {
+    initComponents();
+
+    getContentPane().setBackground(new java.awt.Color(25, 25, 25));
+
+    setIconImage(new javax.swing.ImageIcon(
+        getClass().getResource("/com/cine/claqueta.png")
+    ).getImage());
+
+    // Centrar los componentes horizontalmente
+    jLabel1.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    cmbPelicula.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    cmbSala.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    cmbFuncion.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnContinuar.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnVolver.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+
+    // Crear el panel que agrupa los componentes
+    javax.swing.JPanel panel = new javax.swing.JPanel();
+    panel.setOpaque(false);
+    panel.setLayout(new javax.swing.BoxLayout(
+        panel, javax.swing.BoxLayout.Y_AXIS
+    ));
+
+    panel.add(jLabel1);
+    panel.add(javax.swing.Box.createVerticalStrut(25));
+    panel.add(cmbPelicula);
+    panel.add(javax.swing.Box.createVerticalStrut(15));
+    panel.add(cmbSala);
+    panel.add(javax.swing.Box.createVerticalStrut(15));
+    panel.add(cmbFuncion);
+    panel.add(javax.swing.Box.createVerticalStrut(25));
+    panel.add(btnContinuar);
+    panel.add(javax.swing.Box.createVerticalStrut(15));
+    panel.add(btnVolver);
+
+    // Centrar el grupo en la ventana
+    getContentPane().removeAll();
+    getContentPane().setLayout(new java.awt.GridBagLayout());
+    getContentPane().add(panel);
+
+    setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+
+    // Cargar las películas después de inicializar los componentes
+    cargarPeliculas();
+}
+
     
     private void cargarPeliculas() {
-    jComboBox1.removeAllItems();
-    jComboBox1.addItem("Seleccionar película");
+    cmbPelicula.removeAllItems();
+    cmbPelicula.addItem("Seleccionar película");
 
     for (Funcion f : DatosCine.funciones) {
         String pelicula = f.getPelicula().getNombre();
 
         boolean existe = false;
 
-        for (int i = 0; i < jComboBox1.getItemCount(); i++) {
-            if (jComboBox1.getItemAt(i).equals(pelicula)) {
+        for (int i = 0; i < cmbPelicula.getItemCount(); i++) {
+            if (cmbPelicula.getItemAt(i).equals(pelicula)) {
                 existe = true;
                 break;
             }
         }
 
         if (!existe) {
-            jComboBox1.addItem(pelicula);
+            cmbPelicula.addItem(pelicula);
         }
     }
 }
@@ -61,39 +105,80 @@ public class SeleccionarPelicula extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        cmbPelicula = new javax.swing.JComboBox<>();
+        btnContinuar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cmbSala = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cmbFuncion = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(220, 20, 40));
         jLabel1.setText("SELECCIONAR PELICULA");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Película:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar película", "Batman", "Shrek", "Avengers" }));
-        jComboBox1.addActionListener(this::jComboBox1ActionPerformed);
+        cmbPelicula.setBackground(new java.awt.Color(245, 245, 245));
+        cmbPelicula.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cmbPelicula.setForeground(new java.awt.Color(30, 30, 30));
+        cmbPelicula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar película", "Batman", "Shrek", "Avengers" }));
+        cmbPelicula.addActionListener(this::cmbPeliculaActionPerformed);
 
-        jButton1.setText("Continuar");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        btnContinuar.setBackground(new java.awt.Color(180, 20, 35));
+        btnContinuar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnContinuar.setForeground(new java.awt.Color(255, 255, 255));
+        btnContinuar.setText("Continuar");
+        btnContinuar.setFocusPainted(false);
+        btnContinuar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnContinuarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnContinuarMouseExited(evt);
+            }
+        });
+        btnContinuar.addActionListener(this::btnContinuarActionPerformed);
 
-        jButton2.setText("Volver");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        btnVolver.setBackground(new java.awt.Color(100, 20, 25));
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setText("Volver");
+        btnVolver.setFocusPainted(false);
+        btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVolverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVolverMouseExited(evt);
+            }
+        });
+        btnVolver.addActionListener(this::btnVolverActionPerformed);
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Sala:");
         jLabel3.setToolTipText("");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar sala" }));
-        jComboBox2.addActionListener(this::jComboBox2ActionPerformed);
+        cmbSala.setBackground(new java.awt.Color(245, 245, 245));
+        cmbSala.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cmbSala.setForeground(new java.awt.Color(30, 30, 30));
+        cmbSala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar sala" }));
+        cmbSala.addActionListener(this::cmbSalaActionPerformed);
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Función:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionas función" }));
-        jComboBox3.addActionListener(this::jComboBox3ActionPerformed);
+        cmbFuncion.setBackground(new java.awt.Color(245, 245, 245));
+        cmbFuncion.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cmbFuncion.setForeground(new java.awt.Color(30, 30, 30));
+        cmbFuncion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionas función" }));
+        cmbFuncion.addActionListener(this::cmbFuncionActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,71 +188,70 @@ public class SeleccionarPelicula extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton2)
+                        .addComponent(btnVolver)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(btnContinuar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(135, 135, 135)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(79, 79, 79)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(41, 41, 41)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 89, Short.MAX_VALUE)))
+                        .addGap(102, 102, 102)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbPelicula, 0, 184, Short.MAX_VALUE)
+                            .addComponent(cmbSala, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbFuncion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(jLabel1)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel1)
-                .addGap(37, 37, 37)
+                .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(cmbPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(cmbFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVolver)
+                    .addComponent(btnContinuar))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
 NuevaVenta ventana = new NuevaVenta();
 ventana.setVisible(true);
 this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-if (jComboBox1.getSelectedItem() == null
-            || jComboBox2.getSelectedItem() == null
-            || jComboBox3.getSelectedItem() == null) {
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+if (cmbPelicula.getSelectedItem() == null
+            || cmbSala.getSelectedItem() == null
+            || cmbFuncion.getSelectedItem() == null) {
         return;
     }
 
-    String pelicula = jComboBox1.getSelectedItem().toString();
-    String salaSeleccionada = jComboBox2.getSelectedItem().toString();
-    String funcionSeleccionadaTexto = jComboBox3.getSelectedItem().toString();
+    String pelicula = cmbPelicula.getSelectedItem().toString();
+    String salaSeleccionada = cmbSala.getSelectedItem().toString();
+    String funcionSeleccionadaTexto = cmbFuncion.getSelectedItem().toString();
 
     if (pelicula.equals("Seleccionar película")) {
         JOptionPane.showMessageDialog(this, "Selecciona una película.");
@@ -217,20 +301,20 @@ if (jComboBox1.getSelectedItem() == null
 
     ventana.setVisible(true);
     this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnContinuarActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
- if (jComboBox1.getSelectedItem() == null) {
+    private void cmbPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPeliculaActionPerformed
+ if (cmbPelicula.getSelectedItem() == null) {
         return;
     }
 
-    String pelicula = jComboBox1.getSelectedItem().toString();
+    String pelicula = cmbPelicula.getSelectedItem().toString();
 
-    jComboBox2.removeAllItems();
-    jComboBox3.removeAllItems();
+    cmbSala.removeAllItems();
+    cmbFuncion.removeAllItems();
 
-    jComboBox2.addItem("Seleccionar sala");
-    jComboBox3.addItem("Seleccionar función");
+    cmbSala.addItem("Seleccionar sala");
+    cmbFuncion.addItem("Seleccionar función");
 
     for (Funcion f : DatosCine.funciones) {
         if (f.getPelicula().getNombre().equals(pelicula)) {
@@ -240,34 +324,34 @@ if (jComboBox1.getSelectedItem() == null
 
             boolean existe = false;
 
-            for (int i = 0; i < jComboBox2.getItemCount(); i++) {
-                if (jComboBox2.getItemAt(i).equals(sala)) {
+            for (int i = 0; i < cmbSala.getItemCount(); i++) {
+                if (cmbSala.getItemAt(i).equals(sala)) {
                     existe = true;
                     break;
                 }
             }
 
             if (!existe) {
-                jComboBox2.addItem(sala);
+                cmbSala.addItem(sala);
             }
         }
     }
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cmbPeliculaActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-if (jComboBox2.getSelectedItem() == null) {
+    private void cmbSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSalaActionPerformed
+if (cmbSala.getSelectedItem() == null) {
         return;
     }
 
-    if (jComboBox1.getSelectedItem() == null) {
+    if (cmbPelicula.getSelectedItem() == null) {
         return;
     }
 
-    String sala = jComboBox2.getSelectedItem().toString();
-    String pelicula = jComboBox1.getSelectedItem().toString();
+    String sala = cmbSala.getSelectedItem().toString();
+    String pelicula = cmbPelicula.getSelectedItem().toString();
 
-    jComboBox3.removeAllItems();
-    jComboBox3.addItem("Seleccionar función");
+    cmbFuncion.removeAllItems();
+    cmbFuncion.addItem("Seleccionar función");
 
     for (Funcion f : DatosCine.funciones) {
         String salaFuncion = "Sala " + f.getSala().getNumero()
@@ -278,15 +362,27 @@ if (jComboBox2.getSelectedItem() == null) {
 
             String funcion = f.getHora() + " - " + f.getFecha();
 
-            jComboBox3.addItem(funcion);
+            cmbFuncion.addItem(funcion);
         }
     }
 
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_cmbSalaActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void cmbFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFuncionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_cmbFuncionActionPerformed
+
+    private void btnContinuarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContinuarMouseEntered
+btnContinuar.setBackground(new java.awt.Color(220, 20, 40));    }//GEN-LAST:event_btnContinuarMouseEntered
+
+    private void btnContinuarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContinuarMouseExited
+btnContinuar.setBackground(new java.awt.Color(180, 20, 35));    }//GEN-LAST:event_btnContinuarMouseExited
+
+    private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
+btnVolver.setBackground(new java.awt.Color(160, 30, 35));    }//GEN-LAST:event_btnVolverMouseEntered
+
+    private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
+btnVolver.setBackground(new java.awt.Color(100, 20, 25));    }//GEN-LAST:event_btnVolverMouseExited
 
     /**
      * @param args the command line arguments
@@ -314,11 +410,11 @@ if (jComboBox2.getSelectedItem() == null) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JButton btnContinuar;
+    private javax.swing.JButton btnVolver;
+    private javax.swing.JComboBox<String> cmbFuncion;
+    private javax.swing.JComboBox<String> cmbPelicula;
+    private javax.swing.JComboBox<String> cmbSala;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

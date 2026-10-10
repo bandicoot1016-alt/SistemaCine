@@ -29,9 +29,88 @@ private ArrayList<DetalleCompra> detallesCompra;
     /**
      * Creates new form ResumenVenta
      */
-    public ResumenVenta() {
-        initComponents();
-    }
+    
+public ResumenVenta() {
+    initComponents();
+
+    
+        // Fondo oscuro
+        getContentPane().setBackground(new java.awt.Color(20, 20, 20));
+
+        // Título principal
+        jLabel1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 28));
+        jLabel1.setForeground(new java.awt.Color(220, 20, 40));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        // Resumen de la compra
+        txtResumen.setBackground(new java.awt.Color(30, 30, 30));
+        txtResumen.setForeground(java.awt.Color.WHITE);
+        txtResumen.setFont(new java.awt.Font("Consolas", java.awt.Font.PLAIN, 14));
+        txtResumen.setCaretColor(java.awt.Color.WHITE);
+        txtResumen.setEditable(false);
+
+        // Botón confirmar venta
+        btnConfirmarVenta.setBackground(new java.awt.Color(220, 20, 40));
+        btnConfirmarVenta.setForeground(java.awt.Color.WHITE);
+        btnConfirmarVenta.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 15));
+        btnConfirmarVenta.setFocusPainted(false);
+        btnConfirmarVenta.setBorderPainted(false);
+        btnConfirmarVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        // Botón volver
+        btnVolver.setBackground(new java.awt.Color(70, 70, 70));
+        btnVolver.setForeground(java.awt.Color.WHITE);
+        btnVolver.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+        btnVolver.setFocusPainted(false);
+        btnVolver.setBorderPainted(false);
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        // Botón salir
+        btnSalir.setBackground(new java.awt.Color(100, 20, 25));
+        btnSalir.setForeground(java.awt.Color.WHITE);
+        btnSalir.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+        btnSalir.setFocusPainted(false);
+        btnSalir.setBorderPainted(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+
+    setIconImage(new javax.swing.ImageIcon(
+        getClass().getResource("/com/cine/claqueta.png")
+    ).getImage());
+
+    // Centrar los componentes horizontalmente
+    jLabel1.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    txtResumen.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnConfirmarVenta.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnVolver.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnSalir.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+
+    // Crear el panel de contenido
+    javax.swing.JPanel panel = new javax.swing.JPanel();
+    panel.setOpaque(false);
+    panel.setLayout(new javax.swing.BoxLayout(
+        panel, javax.swing.BoxLayout.Y_AXIS
+    ));
+
+    // Organizar los componentes
+    panel.add(jLabel1);
+    panel.add(javax.swing.Box.createVerticalStrut(20));
+    panel.add(txtResumen);
+    panel.add(javax.swing.Box.createVerticalStrut(20));
+    panel.add(btnConfirmarVenta);
+    panel.add(javax.swing.Box.createVerticalStrut(12));
+    panel.add(btnVolver);
+    panel.add(javax.swing.Box.createVerticalStrut(12));
+    panel.add(btnSalir);
+
+    // Centrar el grupo en la ventana
+    getContentPane().removeAll();
+    getContentPane().setLayout(new java.awt.GridBagLayout());
+    getContentPane().add(panel);
+
+    setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+}
+
 public void cargarDatos(String pelicula, String sala, String funcion, String asientos, ArrayList<Cliente> clientes, ArrayList<Double> precios, Funcion funcionSeleccionada) {
     this.pelicula = pelicula;
     this.sala = sala;
@@ -187,8 +266,8 @@ public void cargarDatosBoletasYComida(
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnConfirmarVenta = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -206,11 +285,11 @@ public void cargarDatosBoletasYComida(
 
         jLabel1.setText("RESUMEN DE VENTA");
 
-        jButton1.setText("Confirmar venta");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        btnConfirmarVenta.setText("Confirmar venta");
+        btnConfirmarVenta.addActionListener(this::btnConfirmarVentaActionPerformed);
 
-        jButton2.setText("Volver");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(this::btnVolverActionPerformed);
 
         txtResumen.setEditable(false);
         txtResumen.setColumns(20);
@@ -230,7 +309,7 @@ public void cargarDatosBoletasYComida(
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton2)
+                        .addComponent(btnVolver)
                         .addGap(249, 249, 249)
                         .addComponent(btnSalir))
                     .addGroup(layout.createSequentialGroup()
@@ -252,7 +331,7 @@ public void cargarDatosBoletasYComida(
                             .addComponent(jLabel19)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(137, 137, 137)
-                        .addComponent(jButton1)))
+                        .addComponent(btnConfirmarVenta)))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -282,10 +361,10 @@ public void cargarDatosBoletasYComida(
                         .addComponent(jLabel19))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btnConfirmarVenta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(btnVolver)
                     .addComponent(btnSalir))
                 .addContainerGap())
         );
@@ -293,7 +372,7 @@ public void cargarDatosBoletasYComida(
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
 DatosCliente ventana = new DatosCliente();
 
 String[] listaAsientos = asientos.split(", ");
@@ -317,9 +396,9 @@ if (ultimoCliente >= 0 && ultimoCliente < listaAsientos.length) {
 
 ventana.setVisible(true);
 this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnConfirmarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarVentaActionPerformed
 String[] listaAsientos = asientos != null ? asientos.split(", ") : new String[0];
 
 Venta venta = new Venta();
@@ -373,7 +452,7 @@ JOptionPane.showMessageDialog(
     this,
     "Venta confirmada correctamente."
 );
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnConfirmarVentaActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
 VentanaPrincipal ventana = new VentanaPrincipal();
@@ -407,9 +486,9 @@ this.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConfirmarVenta;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

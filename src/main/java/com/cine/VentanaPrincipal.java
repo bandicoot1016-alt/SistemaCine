@@ -19,6 +19,37 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
+        setIconImage(new javax.swing.ImageIcon(
+        getClass().getResource("/com/cine/claqueta.png")).getImage());
+        getContentPane().setBackground(new java.awt.Color(25, 25, 25));
+        javax.swing.JPanel panel = new javax.swing.JPanel();
+    panel.setOpaque(false);
+    panel.setLayout(new javax.swing.BoxLayout(
+        panel, javax.swing.BoxLayout.Y_AXIS
+    ));
+
+    jLabel1.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnNuevaVenta.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnFunciones.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnVentas.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnSalir.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+
+    panel.add(jLabel1);
+    panel.add(javax.swing.Box.createVerticalStrut(25));
+    panel.add(btnNuevaVenta);
+    panel.add(javax.swing.Box.createVerticalStrut(15));
+    panel.add(btnFunciones);
+    panel.add(javax.swing.Box.createVerticalStrut(15));
+    panel.add(btnVentas);
+    panel.add(javax.swing.Box.createVerticalStrut(25));
+    panel.add(btnSalir);
+
+    getContentPane().removeAll();
+    getContentPane().setLayout(new java.awt.GridBagLayout());
+    getContentPane().add(panel);
+
+    setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+    
     }
 
     /**
@@ -31,82 +62,177 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnNuevaVenta = new javax.swing.JButton();
         btnFunciones = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnVentas = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Cine");
+        setBackground(new java.awt.Color(20, 20, 20));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("SISTEMA DE CINE");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(220, 20, 40));
+        jLabel1.setText("CINE ROCKSTAR");
 
-        jButton1.setText("Nueva Venta");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        btnNuevaVenta.setBackground(new java.awt.Color(180, 20, 35));
+        btnNuevaVenta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnNuevaVenta.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevaVenta.setText("Nueva Venta");
+        btnNuevaVenta.setFocusPainted(false);
+        btnNuevaVenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnNuevaVentaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNuevaVentaMouseExited(evt);
+            }
+        });
+        btnNuevaVenta.addActionListener(this::btnNuevaVentaActionPerformed);
 
+        btnFunciones.setBackground(new java.awt.Color(180, 20, 35));
+        btnFunciones.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnFunciones.setForeground(new java.awt.Color(255, 255, 255));
         btnFunciones.setText("Funciones");
+        btnFunciones.setFocusPainted(false);
+        btnFunciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnFuncionesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnFuncionesMouseExited(evt);
+            }
+        });
         btnFunciones.addActionListener(this::btnFuncionesActionPerformed);
 
-        jButton6.setText("Ventas");
-        jButton6.addActionListener(this::jButton6ActionPerformed);
+        btnVentas.setBackground(new java.awt.Color(180, 20, 35));
+        btnVentas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnVentas.setForeground(new java.awt.Color(255, 255, 255));
+        btnVentas.setText("Ventas");
+        btnVentas.setFocusPainted(false);
+        btnVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVentasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVentasMouseExited(evt);
+            }
+        });
+        btnVentas.addActionListener(this::btnVentasActionPerformed);
 
-        jButton7.setText("Salir");
+        btnSalir.setBackground(new java.awt.Color(100, 20, 25));
+        btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setText("Salir");
+        btnSalir.setFocusPainted(false);
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+        });
+        btnSalir.addActionListener(this::btnSalirActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(86, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnFunciones)
-                            .addComponent(jButton1)
-                            .addComponent(jButton6)
-                            .addComponent(jButton7)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(jLabel1)))
-                .addContainerGap(108, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnFunciones, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNuevaVenta)
+                            .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(140, 140, 140))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(153, 153, 153))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(83, 83, 83))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel1)
+                .addGap(27, 27, 27)
+                .addComponent(btnNuevaVenta)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(12, 12, 12)
                 .addComponent(btnFunciones)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton6)
-                .addGap(81, 81, 81)
-                .addComponent(jButton7)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnVentas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(btnSalir)
+                .addGap(26, 26, 26))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
 Ventas ventana = new Ventas();
 ventana.setVisible(true);
 this.dispose();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnVentasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnNuevaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaVentaActionPerformed
 NuevaVenta ventana = new NuevaVenta();
 ventana.setVisible(true);
 this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnNuevaVentaActionPerformed
 
     private void btnFuncionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionesActionPerformed
 Funciones ventana = new Funciones();
 ventana.setVisible(true);
 this.dispose();
     }//GEN-LAST:event_btnFuncionesActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+
+    int respuesta = JOptionPane.showConfirmDialog(
+        this,
+        "¿Está seguro de que desea salir?",
+        "Confirmar salida",
+        JOptionPane.YES_NO_OPTION
+    );
+
+    if (respuesta == JOptionPane.YES_OPTION) {
+        System.exit(0);
+    }
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnNuevaVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevaVentaMouseEntered
+btnNuevaVenta.setBackground(new java.awt.Color(220, 20, 40));
+    }//GEN-LAST:event_btnNuevaVentaMouseEntered
+
+    private void btnNuevaVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevaVentaMouseExited
+btnNuevaVenta.setBackground(new java.awt.Color(180, 20, 35));
+    }//GEN-LAST:event_btnNuevaVentaMouseExited
+
+    private void btnFuncionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFuncionesMouseEntered
+btnFunciones.setBackground(new java.awt.Color(220, 20, 40));
+    }//GEN-LAST:event_btnFuncionesMouseEntered
+
+    private void btnFuncionesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFuncionesMouseExited
+btnFunciones.setBackground(new java.awt.Color(180, 20, 35));    }//GEN-LAST:event_btnFuncionesMouseExited
+
+    private void btnVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasMouseEntered
+btnVentas.setBackground(new java.awt.Color(220, 20, 40));    }//GEN-LAST:event_btnVentasMouseEntered
+
+    private void btnVentasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasMouseExited
+btnVentas.setBackground(new java.awt.Color(180, 20, 35));                                        
+    }//GEN-LAST:event_btnVentasMouseExited
+
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+btnSalir.setBackground(new java.awt.Color(160, 30, 35));    }//GEN-LAST:event_btnSalirMouseEntered
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+btnSalir.setBackground(new java.awt.Color(100, 20, 25));    }//GEN-LAST:event_btnSalirMouseExited
 
     /**
      * @param args the command line arguments
@@ -135,9 +261,9 @@ this.dispose();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFunciones;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton btnNuevaVenta;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnVentas;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

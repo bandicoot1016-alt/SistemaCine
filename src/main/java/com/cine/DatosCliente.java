@@ -18,9 +18,165 @@ public class DatosCliente extends javax.swing.JFrame {
     /**
      * Creates new form DatosCliente
      */
-    public DatosCliente() {
-        initComponents();
-    }
+    
+public DatosCliente() {
+    initComponents();
+    
+    jTextField1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 16));
+jTextField2.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 16));
+jTextField3.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 16));
+
+jTextField1.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+    javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 120, 120)),
+    javax.swing.BorderFactory.createEmptyBorder(2, 6, 2, 6)
+));
+    jTextField1.setPreferredSize(new java.awt.Dimension(250, 36));
+jTextField2.setPreferredSize(new java.awt.Dimension(250, 36));
+jTextField3.setPreferredSize(new java.awt.Dimension(250, 36));
+
+jTextField1.setMargin(new java.awt.Insets(0, 6, 0, 6));
+jTextField2.setMargin(new java.awt.Insets(0, 6, 0, 6));
+jTextField3.setMargin(new java.awt.Insets(0, 6, 0, 6));
+        // Aumentar ligeramente la altura de los campos
+        java.awt.Dimension tamCampo =
+                new java.awt.Dimension(250, 30);
+
+        jTextField1.setPreferredSize(tamCampo);
+        jTextField1.setMinimumSize(tamCampo);
+
+        jTextField2.setPreferredSize(tamCampo);
+        jTextField2.setMinimumSize(tamCampo);
+
+        jTextField3.setPreferredSize(tamCampo);
+        jTextField3.setMinimumSize(tamCampo);
+
+        // Mejorar la legibilidad del texto
+        java.awt.Font fuenteCampos =
+                new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 15);
+
+        jTextField1.setFont(fuenteCampos);
+        jTextField2.setFont(fuenteCampos);
+        jTextField3.setFont(fuenteCampos);
+        
+        jTextField1.setMargin(new java.awt.Insets(4, 6, 4, 6));
+jTextField2.setMargin(new java.awt.Insets(4, 6, 4, 6));
+jTextField3.setMargin(new java.awt.Insets(4, 6, 4, 6));
+
+
+    
+        // Fondo oscuro de cine
+        getContentPane().setBackground(new java.awt.Color(20, 20, 20));
+
+        // Título principal
+        jLabel1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 28));
+        jLabel1.setForeground(new java.awt.Color(220, 20, 40));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        // Etiquetas de los datos del cliente
+        jLabel2.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 16));
+        jLabel2.setForeground(java.awt.Color.WHITE);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 16));
+        jLabel3.setForeground(java.awt.Color.WHITE);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 16));
+        jLabel4.setForeground(java.awt.Color.WHITE);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 16));
+        jLabel5.setForeground(java.awt.Color.WHITE);
+
+        // Campos de texto
+        java.awt.Color fondoCampos = new java.awt.Color(40, 40, 40);
+        java.awt.Color rojoCine = new java.awt.Color(220, 20, 40);
+
+        jTextField1.setBackground(fondoCampos);
+        jTextField1.setForeground(java.awt.Color.WHITE);
+        jTextField1.setCaretColor(rojoCine);
+        jTextField1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 15));
+
+        jTextField2.setBackground(fondoCampos);
+        jTextField2.setForeground(java.awt.Color.WHITE);
+        jTextField2.setCaretColor(rojoCine);
+        jTextField2.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 15));
+
+        jTextField3.setBackground(fondoCampos);
+        jTextField3.setForeground(java.awt.Color.WHITE);
+        jTextField3.setCaretColor(rojoCine);
+        jTextField3.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 15));
+
+        // Lista desplegable
+        jComboBox1.setBackground(fondoCampos);
+        jComboBox1.setForeground(java.awt.Color.WHITE);
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 15));
+
+        // Botón principal
+        jButton1.setBackground(rojoCine);
+        jButton1.setForeground(java.awt.Color.WHITE);
+        jButton1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 15));
+        jButton1.setFocusPainted(false);
+        jButton1.setBorderPainted(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        // Botón secundario
+        jButton2.setBackground(new java.awt.Color(100, 20, 25));
+        jButton2.setForeground(java.awt.Color.WHITE);
+        jButton2.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 15));
+        jButton2.setFocusPainted(false);
+        jButton2.setBorderPainted(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+
+    setIconImage(new javax.swing.ImageIcon(
+        getClass().getResource("/com/cine/claqueta.png")
+    ).getImage());
+
+    // Centrar los componentes horizontalmente
+    jLabel1.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    jLabel2.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    jTextField1.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    jLabel3.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    jTextField2.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    jLabel4.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    jTextField3.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    jLabel5.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    jComboBox1.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    jButton1.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    jButton2.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+
+    // Crear el panel de contenido
+    javax.swing.JPanel panel = new javax.swing.JPanel();
+    panel.setOpaque(false);
+    panel.setLayout(new javax.swing.BoxLayout(
+        panel, javax.swing.BoxLayout.Y_AXIS
+    ));
+
+    // Organizar el formulario
+    panel.add(jLabel1);
+    panel.add(javax.swing.Box.createVerticalStrut(25));
+    panel.add(jLabel2);
+    panel.add(jTextField1);
+    panel.add(javax.swing.Box.createVerticalStrut(12));
+    panel.add(jLabel3);
+    panel.add(jTextField2);
+    panel.add(javax.swing.Box.createVerticalStrut(12));
+    panel.add(jLabel4);
+    panel.add(jTextField3);
+    panel.add(javax.swing.Box.createVerticalStrut(12));
+    panel.add(jLabel5);
+    panel.add(jComboBox1);
+    panel.add(javax.swing.Box.createVerticalStrut(25));
+    panel.add(jButton1);
+    panel.add(javax.swing.Box.createVerticalStrut(12));
+    panel.add(jButton2);
+
+    // Centrar todo el formulario
+    getContentPane().removeAll();
+    getContentPane().setLayout(new java.awt.GridBagLayout());
+    getContentPane().add(panel);
+
+    setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+}
+
     private String pelicula;
 private String sala;
 private String funcion;
@@ -231,6 +387,7 @@ if (estudiante.equals("Seleccionar")) {
     JOptionPane.showMessageDialog(this, "Selecciona si eres estudiante.");
     return;
 }
+
 Cliente clienteActual = new Cliente(
     nombre,
     documento,

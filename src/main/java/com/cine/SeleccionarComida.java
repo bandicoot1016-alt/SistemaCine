@@ -5,6 +5,7 @@
 package com.cine;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 /**
  *
  * @author user
@@ -27,10 +28,128 @@ private ArrayList<Double> precios;
     /**
      * Creates new form SeleccionarComida
      */
-    public SeleccionarComida() {
-        initComponents();
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
-    }
+    
+public SeleccionarComida() {
+    initComponents();
+    
+    jSpinner1.setModel(
+    new javax.swing.SpinnerNumberModel(1, 1, 100, 1)
+);
+
+    
+        // Fondo oscuro de cine
+        getContentPane().setBackground(new java.awt.Color(20, 20, 20));
+
+        // Títulos y etiquetas
+        jLabel1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 28));
+        jLabel1.setForeground(new java.awt.Color(220, 20, 40));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 15));
+        jLabel2.setForeground(java.awt.Color.WHITE);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 15));
+        jLabel3.setForeground(java.awt.Color.WHITE);
+
+        // Lista de productos
+        jComboBox1.setBackground(new java.awt.Color(40, 40, 40));
+        jComboBox1.setForeground(java.awt.Color.WHITE);
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 14));
+
+        // Selector de cantidad
+        jSpinner1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 14));
+        jSpinner1.setBackground(new java.awt.Color(40, 40, 40));
+
+        // Botón agregar
+        btnAgregar.setBackground(new java.awt.Color(220, 20, 40));
+        btnAgregar.setForeground(java.awt.Color.WHITE);
+        btnAgregar.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+        btnAgregar.setFocusPainted(false);
+        btnAgregar.setBorderPainted(false);
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        // Botón quitar
+        btnQuitar.setBackground(new java.awt.Color(130, 20, 30));
+        btnQuitar.setForeground(java.awt.Color.WHITE);
+        btnQuitar.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+        btnQuitar.setFocusPainted(false);
+        btnQuitar.setBorderPainted(false);
+        btnQuitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        // Botón continuar
+        btnContinuar.setBackground(new java.awt.Color(220, 20, 40));
+        btnContinuar.setForeground(java.awt.Color.WHITE);
+        btnContinuar.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+        btnContinuar.setFocusPainted(false);
+        btnContinuar.setBorderPainted(false);
+        btnContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        // Botón volver
+        btnVolver.setBackground(new java.awt.Color(70, 70, 70));
+        btnVolver.setForeground(java.awt.Color.WHITE);
+        btnVolver.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+        btnVolver.setFocusPainted(false);
+        btnVolver.setBorderPainted(false);
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        // Resumen del pedido
+        txtPedido.setBackground(new java.awt.Color(30, 30, 30));
+        txtPedido.setForeground(java.awt.Color.WHITE);
+        txtPedido.setFont(new java.awt.Font("Consolas", java.awt.Font.PLAIN, 13));
+        txtPedido.setCaretColor(java.awt.Color.WHITE);
+
+
+    setIconImage(new javax.swing.ImageIcon(
+        getClass().getResource("/com/cine/claqueta.png")
+    ).getImage());
+
+    // Centrar horizontalmente los componentes
+    jLabel1.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    jLabel2.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    jLabel3.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    jComboBox1.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    jSpinner1.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    txtPedido.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnAgregar.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnQuitar.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnVolver.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnContinuar.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+
+    // Crear el panel de contenido
+    javax.swing.JPanel panel = new javax.swing.JPanel();
+    panel.setOpaque(false);
+    panel.setLayout(new javax.swing.BoxLayout(
+        panel, javax.swing.BoxLayout.Y_AXIS
+    ));
+
+    // Organizar los componentes verticalmente
+    panel.add(jLabel1);
+    panel.add(javax.swing.Box.createVerticalStrut(20));
+    panel.add(jLabel2);
+    panel.add(jComboBox1);
+    panel.add(javax.swing.Box.createVerticalStrut(12));
+    panel.add(jLabel3);
+    panel.add(jSpinner1);
+    panel.add(javax.swing.Box.createVerticalStrut(15));
+panel.add(txtPedido);
+    panel.add(javax.swing.Box.createVerticalStrut(20));
+    
+    panel.add(btnAgregar);
+    panel.add(javax.swing.Box.createVerticalStrut(10));
+    panel.add(btnQuitar);
+    panel.add(javax.swing.Box.createVerticalStrut(25));
+    panel.add(btnContinuar);
+    panel.add(javax.swing.Box.createVerticalStrut(10));
+    panel.add(btnVolver);
+
+    // Centrar el conjunto en la ventana
+    getContentPane().removeAll();
+    getContentPane().setLayout(new java.awt.GridBagLayout());
+    getContentPane().add(panel);
+
+    setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+}
+
 public void cargarVenta(Venta venta) {
     this.venta = venta;
     this.vieneDeBoletas = true;
@@ -59,11 +178,11 @@ public void cargarDatosBoletas(String pelicula, String sala, String funcion, Str
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtPedido = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnContinuar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         btnQuitar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,17 +195,17 @@ public void cargarDatosBoletas(String pelicula, String sala, String funcion, Str
 
         jLabel3.setText("Cantidad:");
 
-        jButton1.setText("Agregar");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(this::btnAgregarActionPerformed);
 
         txtPedido.setColumns(20);
         txtPedido.setRows(5);
         jScrollPane1.setViewportView(txtPedido);
 
-        jButton2.setText("Continuar");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        btnContinuar.setText("Continuar");
+        btnContinuar.addActionListener(this::btnContinuarActionPerformed);
 
-        jButton3.setText("Volver");
+        btnVolver.setText("Volver");
 
         btnQuitar.setText("Quitar");
         btnQuitar.addActionListener(this::btnQuitarActionPerformed);
@@ -99,9 +218,9 @@ public void cargarDatosBoletas(String pelicula, String sala, String funcion, Str
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton3)
+                        .addComponent(btnVolver)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                        .addComponent(btnContinuar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -119,7 +238,7 @@ public void cargarDatosBoletas(String pelicula, String sala, String funcion, Str
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jButton1))
+                                                .addComponent(btnAgregar))
                                             .addComponent(jComboBox1, 0, 1, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(btnQuitar))
@@ -139,7 +258,7 @@ public void cargarDatosBoletas(String pelicula, String sala, String funcion, Str
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
+                    .addComponent(btnAgregar)
                     .addComponent(btnQuitar)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -148,15 +267,15 @@ public void cargarDatosBoletas(String pelicula, String sala, String funcion, Str
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2))
+                    .addComponent(btnVolver)
+                    .addComponent(btnContinuar))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
 String productoSeleccionado = jComboBox1.getSelectedItem().toString();
 
 if (productoSeleccionado.equals("Seleccionar producto")) {
@@ -165,6 +284,16 @@ if (productoSeleccionado.equals("Seleccionar producto")) {
 }
 
 int cantidad = (int) jSpinner1.getValue();
+
+if (cantidad <= 0) {
+    JOptionPane.showMessageDialog(
+        this,
+        "La cantidad debe ser mayor que 0.",
+        "Cantidad inválida",
+        JOptionPane.WARNING_MESSAGE
+    );
+    return;
+}
 
 double precioUnitario = 0;
 
@@ -188,7 +317,7 @@ txtPedido.append(
     nombreProducto + " x" + cantidad +
     " - $" + String.format("%,.0f", detalle.getSubtotal()) + "\n"
 );
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnQuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarActionPerformed
 try {
@@ -223,7 +352,7 @@ try {
 }
     }//GEN-LAST:event_btnQuitarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
 if (detallesCompra.isEmpty()) {
     javax.swing.JOptionPane.showMessageDialog(this, "Agrega al menos un producto.");
     return;
@@ -248,7 +377,7 @@ if (vieneDeBoletas) {
 
 ventana.setVisible(true);
 this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnContinuarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,10 +405,10 @@ this.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnQuitar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

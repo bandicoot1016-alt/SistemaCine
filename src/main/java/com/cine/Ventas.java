@@ -17,11 +17,94 @@ public class Ventas extends javax.swing.JFrame {
     /**
      * Creates new form Ventas
      */
-    public Ventas() {
-        initComponents();
-        mostrarVentas();
-        cargarVentasCombo();
-    }
+    
+public Ventas() {
+    initComponents();
+
+    
+        // Fondo de la ventana
+        getContentPane().setBackground(new java.awt.Color(20, 20, 20));
+
+        // Título principal
+        jLabel1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 28));
+        jLabel1.setForeground(new java.awt.Color(220, 20, 40));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        // Etiqueta del selector
+        jLabel2.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 16));
+        jLabel2.setForeground(java.awt.Color.WHITE);
+
+        // Selector de ventas
+        cmbVentas.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 15));
+        cmbVentas.setBackground(new java.awt.Color(40, 40, 40));
+        cmbVentas.setForeground(java.awt.Color.WHITE);
+
+        // Área donde se muestra la información de las ventas
+        txtVentas.setFont(new java.awt.Font("Consolas", java.awt.Font.PLAIN, 14));
+        txtVentas.setBackground(new java.awt.Color(30, 30, 30));
+        txtVentas.setForeground(java.awt.Color.WHITE);
+        txtVentas.setCaretColor(java.awt.Color.WHITE);
+
+        // Botón para eliminar una venta
+        btnEliminarVenta.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 15));
+        btnEliminarVenta.setBackground(new java.awt.Color(220, 20, 40));
+        btnEliminarVenta.setForeground(java.awt.Color.WHITE);
+        btnEliminarVenta.setFocusPainted(false);
+        btnEliminarVenta.setBorderPainted(false);
+        btnEliminarVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        // Botón para volver
+        btnVolver.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 15));
+        btnVolver.setBackground(new java.awt.Color(100, 20, 25));
+        btnVolver.setForeground(java.awt.Color.WHITE);
+        btnVolver.setFocusPainted(false);
+        btnVolver.setBorderPainted(false);
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+
+    setIconImage(new javax.swing.ImageIcon(
+        getClass().getResource("/com/cine/claqueta.png")
+    ).getImage());
+
+    // Centrar horizontalmente los componentes
+    jLabel1.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    jLabel2.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    cmbVentas.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    txtVentas.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnEliminarVenta.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+    btnVolver.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+
+    // Crear el panel de contenido
+    javax.swing.JPanel panel = new javax.swing.JPanel();
+    panel.setOpaque(false);
+    panel.setLayout(new javax.swing.BoxLayout(
+        panel, javax.swing.BoxLayout.Y_AXIS
+    ));
+
+    // Organizar los componentes
+    panel.add(jLabel1);
+    panel.add(javax.swing.Box.createVerticalStrut(20));
+    panel.add(jLabel2);
+    panel.add(cmbVentas);
+    panel.add(javax.swing.Box.createVerticalStrut(15));
+    panel.add(txtVentas);
+    panel.add(javax.swing.Box.createVerticalStrut(20));
+    panel.add(btnEliminarVenta);
+    panel.add(javax.swing.Box.createVerticalStrut(12));
+    panel.add(btnVolver);
+
+    // Centrar el conjunto en la ventana
+    getContentPane().removeAll();
+    getContentPane().setLayout(new java.awt.GridBagLayout());
+    getContentPane().add(panel);
+
+    setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+
+    // Cargar la información de las ventas
+    mostrarVentas();
+    cargarVentasCombo();
+}
+
     
     private void cargarVentasCombo() {
     cmbVentas.removeAllItems();
@@ -121,6 +204,7 @@ public class Ventas extends javax.swing.JFrame {
         btnEliminarVenta.addActionListener(this::btnEliminarVentaActionPerformed);
 
         cmbVentas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbVentas.addActionListener(this::cmbVentasActionPerformed);
 
         jLabel2.setText("Seleccionar venta:");
 
@@ -210,6 +294,10 @@ if (respuesta == JOptionPane.YES_OPTION) {
     );
 }
     }//GEN-LAST:event_btnEliminarVentaActionPerformed
+
+    private void cmbVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVentasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbVentasActionPerformed
 
     /**
      * @param args the command line arguments
